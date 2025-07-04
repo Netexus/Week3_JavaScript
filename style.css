@@ -15,7 +15,7 @@ td, th {
 }
 
 button.delete-btn {
-  background: red;
+  /* background: red; */
   color: white;
   border: none;
   cursor: pointer;

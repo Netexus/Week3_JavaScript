@@ -2,15 +2,20 @@ import { renderProducts } from './productUI.js';
 
 const API_URL = 'http://localhost:3000/products';
 
-// Cargar productos
+// Load products
 async function loadProducts() {
-  const res = await fetch(API_URL);
-  const products = await res.json();
-  renderProducts(products);
-  bindDeleteButtons();
+  try {
+    const res = await fetch(API_URL);
+    if (!res.ok) throw new Error('No se pudo cargar productos');
+    const products = await res.json();
+    renderProducts(products);
+    bindDeleteButtons();
+  } catch (err) {
+    alert('Error cargando productos: ' + err.message);
+  }
 }
 
-// Añadir producto
+// Add product
 document.getElementById('productForm').addEventListener('submit', async e => {
   e.preventDefault();
 
@@ -38,11 +43,18 @@ document.getElementById('productForm').addEventListener('submit', async e => {
   }
 });
 
-// Eliminar producto
-async function deleteProduct(id) {
-  await fetch(`${API_URL}/${id}`, { method: 'DELETE' });
-  loadProducts();
-}
+// Update product
+
+document.getElementById("edit").addEventListener("submit", async e => {
+  e.preventDefault();
+  
+})
+
+// // Eliminar producto
+// async function deleteProduct(id) {
+//   await fetch(`${API_URL}/${id}`, { method: 'DELETE' });
+//   loadProducts();
+// }
 
 // Asignar eventos a botones de eliminar
 function bindDeleteButtons() {
