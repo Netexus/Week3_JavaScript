@@ -1,0 +1,23 @@
+body {
+  font-family: sans-serif;
+  padding: 1rem;
+}
+
+table {
+  margin-top: 1rem;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+}
+
+button.delete-btn {
+  background: red;
+  color: white;
+  border: none;
+  cursor: pointer;
+  padding: 4px 8px;
+}
